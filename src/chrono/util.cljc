@@ -47,16 +47,16 @@
 
 (defn normalize [t]
   (case (:type t)
-    :datetime (->> [t 0]
-                   (simplify :second 60)
-                   (simplify :minute 60)
-                   (simplify :hour 24)
-                   (apply add-days)
-                   (simplify-date)
-                   )
     :time (->> [t 0]
                (simplify :second 60)
                (simplify :minute 60)
-               (simplify :hour)
-               first)
+               (simplify :hour 24)
+               (apply add-days)
+               (simplify-date)
+               )
+    :interval (->> [t 0]
+                   (simplify :second 60)
+                   (simplify :minute 60)
+                   (simplify :hour)
+                   first)
     t))
