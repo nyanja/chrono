@@ -41,3 +41,13 @@
           :hour 19
           :minute 44
           :second 3})))
+
+(deftest format-test
+  (is (= (sut/format {:year 2025
+                      :month 3
+                      :day 23
+                      :hour 19
+                      :minute 44
+                      :second 3}
+                     "Date: %d.%m.%y (%Y) %H:%M:%S")
+         "Date: 23.03.25 (2025) 19:44:03")))

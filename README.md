@@ -8,28 +8,26 @@ Pure clojure time made simple for clj & cljs
 
 
 (def t (ch/time
-          {:year 2018 
+          {:year 2018
            :month 1
-           :day 29 
-           :hours 10 
-           :minutes 30 
+           :day 29
+           :hour 10
+           :minute 30
            :second 15
            :tz :utc}))
 
 (ch/now) => time
-        
-(ch/add t {:minutes 100}) => time        
-(ch/add t {:minutes -100}) => time        
+
+(ch/add t {:minutes 100}) => time
+(ch/add t {:minutes -100}) => time
 
 (ch/to-tz t :ny)
 (ch/to-tz t :utc)
 
-(def iso [:year "-" :month "-" :day "T" :h ":" :min ":" :sec])
-(ch/format t iso) 
-(ch/parse t iso) 
+(ch/format t :iso) => "2018-01-29T10:30:15"
+(ch/format t "%H:%M") => "10:30"
 
-(ch/format t [:day "/" :month "/" :year])
-(ch/parse  t  [:year "." :month "." :day])
+(ch/parse s :iso)
 
 
 
